@@ -36,6 +36,8 @@ class Application {
     this.middlewares.push(callback)
     // this.callback = callback
   }
+
+  // 中间件引入处理
   compose (middlewares){
     return function(context){
       return dispatch(0)
@@ -60,6 +62,8 @@ class Application {
     })
     server.listen(...args)
   }
+
+  // 挂载request和response对象
   createCtx(req, res){
     let ctx = Object.create(this.context)
     ctx.request = Object.create(this.request)
