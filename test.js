@@ -1,47 +1,47 @@
 
 
-// async function fn1(next){
-//   console.log('fn1')
-//   await next()
-//   console.log('end fn1')
-// }
+async function fn1(next){
+  console.log('fn1')
+  await next()
+  console.log('end fn1')
+}
 
-// async function fn2(next){
-//   console.log('fn2')
-//   await delay()
-//   await next()
-//   console.log('end fn2')
-// }
-// function fn3(next){
-//   console.log('fn3')
-// }
+async function fn2(next){
+  console.log('fn2')
+  await delay()
+  await next()
+  console.log('end fn2')
+}
+function fn3(next){
+  console.log('fn3')
+}
 
-// function delay(){
-//   return new Promise((reslove,reject)=>{
-//     setTimeout(()=>{
-//       reslove()
-//     },2000)
-//   })
-// }
+function delay(){
+  return new Promise((reslove,reject)=>{
+    setTimeout(()=>{
+      reslove()
+    },2000)
+  })
+}
 
-// function compose (middlewares){
-//   return function(){
-//     return dispatch(0)
-//     function dispatch(i){
-//       let fn = middlewares[i]
-//       if(!fn){
-//         return Promise.resolve()
-//       }
-//       return Promise.resolve(fn(function next(){
-//         return dispatch(i+1)
-//       }))
-//     }
-//   }
-// }
+function compose (middlewares){
+  return function(){
+    return dispatch(0)
+    function dispatch(i){
+      let fn = middlewares[i]
+      if(!fn){
+        return Promise.resolve()
+      }
+      return Promise.resolve(fn(function next(){
+        return dispatch(i+1)
+      }))
+    }
+  }
+}
 
-// const middlewares = [fn1,fn2,fn3]
-// const finalFn = compose(middlewares)
-// finalFn()
+const middlewares = [fn1,fn2,fn3]
+const finalFn = compose(middlewares)
+finalFn()
 
 
 
@@ -77,16 +77,16 @@
 
 
 
-let woniu = {
-  _name:'蜗牛',
-  get name(){
-    return this._name
-  },
-  set name(val){
-    console.log('new name is '+val)
-    this._name = val
-  }
-}
-console.log(woniu.name)
-woniu.name = 'imooc'
-console.log(woniu.name)
+// let woniu = {
+//   _name:'蜗牛',
+//   get name(){
+//     return this._name
+//   },
+//   set name(val){
+//     console.log('new name is '+val)
+//     this._name = val
+//   }
+// }
+// console.log(woniu.name)
+// woniu.name = 'imooc'
+// console.log(woniu.name)
